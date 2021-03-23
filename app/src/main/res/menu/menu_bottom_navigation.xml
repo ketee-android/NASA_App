@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="none">
         <item
-            android:id="@+id/navigation_one"
+            android:id="@+id/navigationOne"
             android:icon="@drawable/ic_archive"
-            android:title="На экран 1" />
+            android:title="На экран 1"
+            tools:ignore="HardcodedText" />
         <item
-            android:id="@+id/navigation_two"
+            android:id="@+id/navigationTwo"
             android:icon="@drawable/ic_send"
-            android:title="На экран 2" />
+            android:title="На экран 2"
+            tools:ignore="HardcodedText"/>
     </group>
 </menu>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6B6DDD</color>
-    <color name="colorPrimaryDark">#5B65BC</color>
-    <color name="colorAccent">#3B4695</color>
+    <color name="colorPrimary">#7E88DD</color>
+    <color name="colorPrimaryDark">#616DD5</color>
+    <color name="colorAccent">#4A57BA</color>
+    <color name="rippleColor">#50D5E1</color>
     <color name="color_gray">#66000000</color>
+    <color name="light_purple">#E9EAF9</color>
+    <color name="text_color">#393939</color>
+    <color name="second_text_color">#737373</color>
 </resources>

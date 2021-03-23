@@ -22,10 +22,10 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        navigation_view.setNavigationItemSelectedListener { menuItem ->
+        navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.navigation_one -> Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
-                R.id.navigation_two -> Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
+                R.id.navigationOne -> Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+                R.id.navigationTwo -> Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
             }
             true
         }

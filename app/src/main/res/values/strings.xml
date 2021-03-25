@@ -5,8 +5,9 @@
     <string name="wiki_helper_text">Поищите термин в википедии</string>
     <string name="favourite">favourite</string>
     <string name="settings">settings</string>
-    <string name="search">Search</string>
+    <string name="home">Home</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="today_chip_text">Сегодня</string>
+    <string name="yesterday_chip_text">Вчера</string>
+    <string name="day_before_yesterday_chip_text">Позавчера</string>
 </resources>

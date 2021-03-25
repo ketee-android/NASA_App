@@ -11,21 +11,20 @@ import retrofit2.Response
 class PictureOfTheDayViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
     private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
-) :
-    ViewModel() {
+) : ViewModel() {
 
-    fun getData(): LiveData<PictureOfTheDayData> {
-        sendServerRequest()
+    fun getData(date: String): LiveData<PictureOfTheDayData> {
+        sendServerRequest(date)
         return liveDataForViewToObserve
     }
 
-    private fun sendServerRequest() {
+    private fun sendServerRequest(date: String) {
         liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             PictureOfTheDayData.Error(Throwable("You need API key"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(object :
+            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey, date).enqueue(object :
                 Callback<PODServerResponseData> {
                 override fun onResponse(
                     call: Call<PODServerResponseData>,
@@ -39,9 +38,6 @@ class PictureOfTheDayViewModel(
                         if (message.isNullOrEmpty()) {
                             liveDataForViewToObserve.value =
                                 PictureOfTheDayData.Error(Throwable("Unidentified error"))
-                        } else {
-                            liveDataForViewToObserve.value =
-                                PictureOfTheDayData.Error(Throwable(message))
                         }
                     }
                 }

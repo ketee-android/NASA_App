@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="equilateral_layout_margin_top">15dp</dimen>
+    <dimen name="chip_group_margin_top">10dp</dimen>
+    <dimen name="main_constraint_layout_padding_horizontal">10dp</dimen>
+    <dimen name="wikipedia_text_input_width">0dp</dimen>
+    <dimen name="wikipedia_text_input_margin_top">5dp</dimen>
+    <dimen name="navigation_view_margin_horizontal">8dp</dimen>
+    <dimen name="navigation_view_margin_top">8dp</dimen>
+    <dimen name="bottom_app_bar_margin_bottom">14dp</dimen>
+    <dimen name="bottom_sheet_peek_height">14dp</dimen>
+    <dimen name="bottom_sheet_line_width">25dp</dimen>
+    <dimen name="bottom_sheet_line_height">1dp</dimen>
+    <dimen name="bottom_sheet_line_margin_top">7dp</dimen>
+    <dimen name="bottom_sheet_text_layout_margin_horizontal">5dp</dimen>
+    <dimen name="bottom_sheet_text_layout_margin_top">17dp</dimen>
+    <dimen name="bottom_sheet_text_layout_margin_bottom">5dp</dimen>
+    <dimen name="bottom_sheet_description_header_margin_top">10dp</dimen>
+    <dimen name="bottom_sheet_description_header_text_size">22sp</dimen>
+    <dimen name="bottom_sheet_description_text_margin_top">15dp</dimen>
+    <dimen name="bottom_sheet_description_text_margin_bottom">10dp</dimen>
+    <dimen name="bottom_sheet_description_text_margin_horizontal">10dp</dimen>
+    <dimen name="bottom_sheet_description_text_size">16sp</dimen>
+    <dimen name="settings_fragment_line_view_layout_height">14dp</dimen>
+    <dimen name="set_theme_header_view_margin_start">10dp</dimen>
+    <dimen name="set_theme_header_view_margin_top">15dp</dimen>
+    <dimen name="radio_buttons_style_margin_start">10dp</dimen>
+    <dimen name="radio_buttons_text_size">18sp</dimen>
+</resources>

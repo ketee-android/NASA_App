@@ -10,4 +10,7 @@
     <string name="today_chip_text">Сегодня</string>
     <string name="yesterday_chip_text">Вчера</string>
     <string name="day_before_yesterday_chip_text">Позавчера</string>
+    <string name="set_theme_header_view">Установить тему</string>
+    <string name="switch_button_light_theme_text">Светлая тема</string>
+    <string name="switch_button_dark_theme_text">Темная тема</string>
 </resources>

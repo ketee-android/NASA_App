@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import com.ketee_jishs.nasa_app.R
 import com.ketee_jishs.nasa_app.util.*
-import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import java.text.SimpleDateFormat
 
 @Suppress("DEPRECATION")
@@ -42,7 +42,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -119,7 +119,7 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
-    private fun getChipsPrefs() = sharedPrefs?.getInt(CHIP_KEY, CHECKED_TODAY)
+    private fun getChipsPrefs() = sharedPrefs?.getInt(KEY_CHIP, CHECKED_TODAY)
 
     private fun setData(date: String, prefsMode: Int) {
         getData(date)
@@ -127,7 +127,7 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun saveChipSettings(prefsMode: Int) =
-        sharedPrefs?.edit()?.putInt(CHIP_KEY, prefsMode)?.apply()
+        sharedPrefs?.edit()?.putInt(KEY_CHIP, prefsMode)?.apply()
 
     companion object {
         fun newInstance() = PictureOfTheDayFragment()

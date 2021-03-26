@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/backgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,23 +12,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            style="@style/mainConstraintLayoutStyle">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/wikipedia_text_input_width"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/wikipedia_text_input_margin_top"
                 android:hint="@string/search_wiki"
-                app:counterEnabled="true"
-                app:counterMaxLength="20"
-                app:endIconCheckable="true"
-                app:endIconDrawable="@drawable/ic_wikipedia"
-                app:endIconMode="custom"
                 app:helperText="@string/wiki_helper_text"
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -45,54 +37,36 @@
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipMainGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
+                style="@style/chipGroupStyle"
                 app:layout_constraintStart_toStartOf="@+id/inputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/inputLayout"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/todayChip"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:checked="true"
-                    android:text="@string/today_chip_text"
-                    app:chipBackgroundColor="@color/light_purple"
-                    app:rippleColor="@color/rippleColor" />
+                    android:text="@string/today_chip_text" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/yesterdayChip"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:checked="false"
-                    android:text="@string/yesterday_chip_text"
-                    app:chipBackgroundColor="@color/light_purple"
-                    app:rippleColor="@color/rippleColor" />
+                    android:text="@string/yesterday_chip_text" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/dayBeforeYesterdayChip"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:checked="false"
-                    android:text="@string/day_before_yesterday_chip_text"
-                    app:chipBackgroundColor="@color/light_purple"
-                    app:rippleColor="@color/rippleColor" />
+                    android:text="@string/day_before_yesterday_chip_text" />
             </com.google.android.material.chip.ChipGroup>
-
 
             <com.ketee_jishs.nasa_app.util.EquilateralImageView
                 android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                style="@style/equilateralImageViewStyle"
                 android:contentDescription="@string/photo_of_the_day_stub"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

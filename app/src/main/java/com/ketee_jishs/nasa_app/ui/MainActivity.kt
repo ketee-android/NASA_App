@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity() {
     private val sharedPrefs by lazy {
         getSharedPreferences(CHIPS_SHARED_PREFS_NAME, Context.MODE_PRIVATE)
     }
+    private val themePrefs by lazy {
+        getSharedPreferences(THEME_PREFS_NAME, Context.MODE_PRIVATE)
+    }
+    private val screenPrefs by lazy {
+        getSharedPreferences(SCREEN_PREFS_NAME, Context.MODE_PRIVATE)
+    }
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel: PictureOfTheDayViewModel by lazy {
@@ -42,13 +49,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initData()
-        setBottomSheetBehavior(findViewById(R.id.bottomSheetContainer))
-        onMenuItemClickListener()
 
         if (savedInstanceState == null) {
             goToMainScreen()
         }
+
+        initScreen()
+        initData()
+        initTheme()
+        setBottomSheetBehavior(findViewById(R.id.bottomSheetContainer))
+        onMenuItemClickListener()
     }
 
     @SuppressLint("ResourceType")
@@ -62,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         bottomAppBar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.appBarFav -> toast("Favourite")
-                R.id.appBarSettings -> goToSettingsScreen()
+                R.id.appBarSettings -> setScreen(goToSettingsScreen(), SETTINGS_SCREEN)
             }
             true
         }
@@ -72,28 +82,36 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, string, Toast.LENGTH_SHORT).show()
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun goToMainScreen() {
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager
+            .beginTransaction()
             .replace(R.id.container, PictureOfTheDayFragment.newInstance())
             .commitNow()
 
-        bottomAppBar.navigationIcon =
-            ContextCompat.getDrawable(applicationContext, R.drawable.ic_hamburger_menu_bottom_bar)
         bottomAppBar.setNavigationOnClickListener {
             let {
                 BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
             }
         }
+
         bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
         bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
 
         fab.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_plus_fab))
-        fab.setOnClickListener { goToSettingsScreen() } // Потом придумаю что-нибудь другое
+        fab.setOnClickListener {
+            setScreen(
+                goToSettingsScreen(),
+                SETTINGS_SCREEN
+            )
+        } // Потом придумаю что-нибудь другое
 
         initData()
+        initTheme()
         bottomSheetContainer.visibility = View.VISIBLE
     }
 
+    @SuppressLint("NewApi")
     private fun goToSettingsScreen() {
         supportFragmentManager
             .beginTransaction()
@@ -106,8 +124,36 @@ class MainActivity : AppCompatActivity() {
         bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
 
         fab.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_back_fab))
-        fab.setOnClickListener { goToMainScreen() }
+        fab.setOnClickListener {
+            setScreen(goToMainScreen(), PICTURE_SCREEN)
+            bottomAppBar.navigationIcon = ContextCompat.getDrawable(
+                applicationContext,
+                R.drawable.ic_hamburger_menu_bottom_bar
+            )
 
+            when (getThemePrefs()) {
+                THEME_DAY -> bottomAppBar.navigationIcon?.setTint(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.navigation_icon_day_color
+                    )
+                )
+                THEME_NIGHT -> bottomAppBar.navigationIcon?.setTint(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.navigation_icon_night_color
+                    )
+                )
+            }
+
+            bottomAppBar.setNavigationOnClickListener {
+                let {
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
+                }
+            }
+        }
+
+        initTheme()
         bottomSheetContainer.visibility = View.GONE
     }
 
@@ -134,7 +180,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
     @SuppressLint("SimpleDateFormat")
     private fun initData() {
         when (getChipsPrefs()) {
@@ -144,7 +189,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getChipsPrefs() = sharedPrefs?.getInt(CHIP_KEY, CHECKED_TODAY)
+    private fun initTheme() {
+        when (getThemePrefs()) {
+            THEME_DAY -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            THEME_NIGHT -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+    }
+
+    private fun setScreen(screen: Unit, prefsMode: Int) {
+        apply { screen }
+        saveScreen(prefsMode)
+    }
+
+    private fun saveScreen(screen: Int) = screenPrefs.edit().putInt(KEY_SCREEN, screen).apply()
+
+    private fun initScreen() {
+        when (getScreenPrefs()) {
+            PICTURE_SCREEN -> goToMainScreen()
+            SETTINGS_SCREEN -> goToSettingsScreen()
+        }
+    }
+
+    private fun getChipsPrefs() = sharedPrefs?.getInt(KEY_CHIP, CHECKED_TODAY)
+    private fun getThemePrefs() = themePrefs?.getInt(KEY_THEME, THEME_DAY)
+    private fun getScreenPrefs() = screenPrefs?.getInt(KEY_SCREEN, PICTURE_SCREEN)
 
     private fun getData(date: String) {
         viewModel.getData(date)

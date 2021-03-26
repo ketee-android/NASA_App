@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#7E88DD</color>
-    <color name="colorPrimaryDark">#616DD5</color>
-    <color name="colorAccent">#4A57BA</color>
-    <color name="rippleColor">#50D5E1</color>
+    <color name="color_primary">#7E88DD</color>
+    <color name="color_primary_dark">#616DD5</color>
+    <color name="color_on_primary">#4A57BA</color>
+    <color name="ripple_color">#50D5E1</color>
     <color name="color_gray">#66000000</color>
-    <color name="light_purple">#E9EAF9</color>
     <color name="text_color">#393939</color>
     <color name="second_text_color">#737373</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="items_color">#FFFFFF</color>
+    <color name="bottom_navigation_item_color">#393939</color>
+    <color name="chip_checked_text_color">#FFFFFF</color>
+    <color name="chip_unchecked_text_color">#FFFFFF</color>
+    <color name="chip_checked_background">#7E88DD</color>
+    <color name="chip_unchecked_background">#A0A7E1</color>
+    <color name="navigation_icon_day_color">#FFFFFF</color>
+    <color name="navigation_icon_night_color">#A3A3A3</color>
 </resources>

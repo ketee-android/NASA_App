@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.ketee_jishs.nasa_app.R
+import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayFragment
 import com.ketee_jishs.nasa_app.util.KEY_THEME
 import com.ketee_jishs.nasa_app.util.THEME_DAY
 import com.ketee_jishs.nasa_app.util.THEME_NIGHT
@@ -15,6 +16,7 @@ import com.ketee_jishs.nasa_app.util.THEME_PREFS_NAME
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : Fragment() {
+
     private val sharedPrefs by lazy {activity?.getSharedPreferences(THEME_PREFS_NAME, Context.MODE_PRIVATE)}
 
     override fun onCreateView(
@@ -28,6 +30,11 @@ class SettingsFragment : Fragment() {
         super.onStart()
         changeTheme()
         initTheme()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        PictureOfTheDayFragment.isMain = false
     }
 
     private fun changeTheme() {

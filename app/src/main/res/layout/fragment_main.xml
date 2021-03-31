@@ -47,21 +47,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/today_chip_text" />
+                    android:text="@string/today_text" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/yesterdayChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:text="@string/yesterday_chip_text" />
+                    android:text="@string/yesterday_text" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/dayBeforeYesterdayChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:text="@string/day_before_yesterday_chip_text" />
+                    android:text="@string/day_before_yesterday_text" />
             </com.google.android.material.chip.ChipGroup>
 
             <com.ketee_jishs.nasa_app.util.EquilateralImageView
@@ -70,9 +70,20 @@
                 android:contentDescription="@string/photo_of_the_day_stub"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.157"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/chipMainGroup"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_no_photo_vector" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/noDataTextView"
+                style="@style/bottomSheetDescriptionTextStyle.earthCaptionTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <ProgressBar
                 android:id="@+id/progressBar"

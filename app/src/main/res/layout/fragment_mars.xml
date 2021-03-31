@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/backgroundColor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            style="@style/mainConstraintLayoutStyle">
+
+            <com.ketee_jishs.nasa_app.util.EquilateralImageView
+                android:id="@+id/marsImageView"
+                style="@style/equilateralImageViewStyle"
+                android:contentDescription="@string/photo_of_the_day_stub"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.157"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_no_photo_vector" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/cameraName"
+                style="@style/bottomSheetDescriptionHeaderStyle.dateEarthText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/marsImageView"
+                tools:text="Mast Camera" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/dateMarsView"
+                style="@style/bottomSheetDescriptionTextStyle.earthCaptionTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cameraName"
+                tools:text="Дата съемки: 2021-03-28" />
+
+            <ProgressBar
+                android:id="@+id/marsProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/marsImageView"
+                app:layout_constraintStart_toStartOf="@+id/marsImageView"
+                app:layout_constraintTop_toTopOf="@+id/marsImageView"
+                tools:visibility="gone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <View style="@style/settingsFragmentLineViewStyle" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

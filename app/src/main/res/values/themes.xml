@@ -39,13 +39,16 @@
     </style>
 
     <style name="navigationViewStyle">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">bottom</item>
-        <item name="android:layout_marginHorizontal" tools:ignore="NewApi">@dimen/navigation_view_margin_horizontal</item>
-        <item name="android:layout_marginTop">@dimen/navigation_view_margin_top</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_gravity">bottom</item>
         <item name="itemIconTint">@color/bottom_navigation_item_color</item>
         <item name="itemTextColor">@color/bottom_navigation_item_color</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/bottom_navigation_view_margin_horizontal</item>
+        <item name="android:layout_marginBottom">@dimen/bottom_navigation_view_margin_bottom</item>
+        <item name="elevation">@dimen/bottom_navigation_view_elevation</item>
+        <item name="itemBackground">@drawable/navigation_view_shape</item>
     </style>
 
     <style name="fabStyle">
@@ -65,7 +68,6 @@
         <item name="fabAlignmentMode">center</item>
         <item name="hideOnScroll">true</item>
         <item name="layout_scrollFlags">scroll|enterAlways</item>
-        <item name="navigationIcon">@drawable/ic_hamburger_menu_bottom_bar</item>
     </style>
 
     <style name="bottomSheetLineStyle">
@@ -122,5 +124,14 @@
     <style name="bottomSheetDescriptionHeaderStyle.setThemeHeaderViewStyle">
         <item name="android:layout_marginStart">@dimen/set_theme_header_view_margin_start</item>
         <item name="android:layout_marginTop">@dimen/set_theme_header_view_margin_top</item>
+    </style>
+
+    <style name="bottomSheetDescriptionHeaderStyle.dateEarthText">
+        <item name="android:layout_marginTop">@dimen/earth_date_text_margin_top</item>
+    </style>
+
+    <style name="bottomSheetDescriptionTextStyle.earthCaptionTextStyle">
+        <item name="android:layout_marginTop">@dimen/earth_caption_text_margin_top</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/earth_caption_text_margin_horizontal</item>
     </style>
 </resources>

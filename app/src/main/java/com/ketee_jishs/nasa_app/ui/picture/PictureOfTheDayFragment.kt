@@ -33,7 +33,10 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getData(formatter.format(getCurrentDate()))
+        if (savedInstanceState == null) {
+            getData(formatter.format(getCurrentDate()))
+        }
+
         initChips()
         checkChip()
     }
@@ -58,8 +61,14 @@ class PictureOfTheDayFragment : Fragment() {
     private fun checkChip() {
         chipMainGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                todayChip.id -> setData(formatter.format(getCurrentDate()), CHECKED_TODAY)
-                yesterdayChip.id -> setData(formatter.format(getYesterdayDate()), CHECKED_YESTERDAY)
+                todayChip.id -> setData(
+                    formatter.format(getCurrentDate()),
+                    CHECKED_TODAY
+                )
+                yesterdayChip.id -> setData(
+                    formatter.format(getYesterdayDate()),
+                    CHECKED_YESTERDAY
+                )
                 dayBeforeYesterdayChip.id -> setData(
                     formatter.format(getDayBeforeYesterdayDate()),
                     CHECKED_DAY_BEFORE_YESTERDAY
@@ -94,6 +103,7 @@ class PictureOfTheDayFragment : Fragment() {
             }
             is PictureOfTheDayData.Error -> {
                 toast(data.error.message)
+                progressBar.visibility = View.GONE
             }
         }
     }
@@ -131,5 +141,6 @@ class PictureOfTheDayFragment : Fragment() {
 
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
+        var isMain = true
     }
 }

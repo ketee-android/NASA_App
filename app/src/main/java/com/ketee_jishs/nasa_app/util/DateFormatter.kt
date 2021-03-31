@@ -17,3 +17,15 @@ fun getDayBeforeYesterdayDate(): Date {
     calendar.add(Calendar.DATE, -2)
     return calendar.time
 }
+
+fun getThirdDate(): Date {
+    val calendar = Calendar.getInstance()
+    calendar.add(Calendar.DATE, -3)
+    return calendar.time
+}
+
+fun getForthDate(): Date {
+    val calendar = Calendar.getInstance()
+    calendar.add(Calendar.DATE, -4)
+    return calendar.time
+}

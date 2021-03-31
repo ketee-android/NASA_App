@@ -26,4 +26,10 @@
     <dimen name="set_theme_header_view_margin_top">15dp</dimen>
     <dimen name="radio_buttons_style_margin_start">10dp</dimen>
     <dimen name="radio_buttons_text_size">18sp</dimen>
+    <dimen name="earth_caption_text_margin_horizontal">0dp</dimen>
+    <dimen name="earth_caption_text_margin_top">5dp</dimen>
+    <dimen name="earth_date_text_margin_top">10dp</dimen>
+    <dimen name="bottom_navigation_view_margin_bottom">24dp</dimen>
+    <dimen name="bottom_navigation_view_margin_horizontal">10dp</dimen>
+    <dimen name="bottom_navigation_view_elevation">1000dp</dimen>
 </resources>

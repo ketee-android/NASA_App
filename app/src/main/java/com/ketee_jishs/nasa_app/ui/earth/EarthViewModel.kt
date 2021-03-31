@@ -1,4 +1,4 @@
-package com.ketee_jishs.nasa_app.ui.picture
+package com.ketee_jishs.nasa_app.ui.earth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,42 +9,42 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PictureOfTheDayViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
+class EarthViewModel (
+    private val liveDataForViewToObserve: MutableLiveData<EarthData> = MutableLiveData(),
     private val nasaRetrofitImpl: NasaRetrofitImpl = NasaRetrofitImpl()
 ) : ViewModel() {
 
-    fun getData(date: String): LiveData<PictureOfTheDayData> {
+    fun getData(date: String): LiveData<EarthData> {
         sendServerRequest(date)
         return liveDataForViewToObserve
     }
 
     private fun sendServerRequest(date: String) {
-        liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
+        liveDataForViewToObserve.value = EarthData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
-            PictureOfTheDayData.Error(Throwable("You need API key"))
+            EarthData.Error(Throwable("You need API key"))
         } else {
-            nasaRetrofitImpl.getPODRetrofitImpl().getPictureOfTheDay(apiKey, date).enqueue(object :
-                Callback<PODServerResponseData> {
+            nasaRetrofitImpl.getEarthRetrofitImpl().getEarthPicture(date, apiKey).enqueue(object :
+                Callback<ArrayList<EarthServerResponseData>> {
                 override fun onResponse(
-                    call: Call<PODServerResponseData>,
-                    response: Response<PODServerResponseData>
+                    call: Call<ArrayList<EarthServerResponseData>>,
+                    response: Response<ArrayList<EarthServerResponseData>>
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         liveDataForViewToObserve.value =
-                            PictureOfTheDayData.Success(response.body()!!)
+                            EarthData.Success(response.body()!!)
                     } else {
                         val message = response.message()
                         if (message.isNullOrEmpty()) {
                             liveDataForViewToObserve.value =
-                                PictureOfTheDayData.Error(Throwable("Unidentified error"))
+                                EarthData.Error(Throwable("Unidentified error"))
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-                    liveDataForViewToObserve.value = PictureOfTheDayData.Error(t)
+                override fun onFailure(call: Call<ArrayList<EarthServerResponseData>>, t: Throwable) {
+                    liveDataForViewToObserve.value = EarthData.Error(t)
                 }
             })
         }

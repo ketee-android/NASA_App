@@ -15,19 +15,27 @@
             style="@style/mainConstraintLayoutStyle"
             app:layoutDescription="@xml/motion_scene">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/wikipediaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/wikipedia_button_margin_top"
+                app:layout_constraintBottom_toBottomOf="@+id/inputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/inputLayout"
+                app:srcCompat="@drawable/ic_wikipedia" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayout"
                 android:layout_width="@dimen/wikipedia_text_input_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/wikipedia_text_input_margin_start"
                 android:layout_marginTop="@dimen/wikipedia_text_input_margin_top"
-                android:layout_marginBottom="11dp"
                 android:hint="@string/search_wiki"
                 app:helperText="@string/wiki_helper_text"
-                app:layout_constraintBottom_toTopOf="@+id/chipMainGroup"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintHorizontal_bias="0.473"
-                app:layout_constraintStart_toEndOf="@+id/wikipediaButton"
+                app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.03">
 
@@ -41,9 +49,11 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipMainGroup"
                 style="@style/chipGroupStyle"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/wikipediaButton"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputLayout"
+                app:layout_constraintTop_toTopOf="@+id/inputLayout"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
@@ -68,21 +78,11 @@
                     android:text="@string/day_before_yesterday_text" />
             </com.google.android.material.chip.ChipGroup>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/wikipediaButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/wikipedia_button_margin_top"
-                app:layout_constraintBottom_toBottomOf="@+id/inputLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/inputLayout"
-                app:srcCompat="@drawable/ic_wikipedia" />
-
             <com.ketee_jishs.nasa_app.util.EquilateralImageView
                 android:id="@+id/imageView"
                 style="@style/equilateralImageViewStyle"
                 android:contentDescription="@string/photo_of_the_day_stub"
-                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.157"
                 app:layout_constraintStart_toStartOf="parent"

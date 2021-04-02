@@ -26,7 +26,7 @@
     </style>
 
     <style name="chipGroupStyle">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/chip_group_margin_top</item>
         <item name="android:orientation">horizontal</item>
@@ -35,7 +35,9 @@
     <style name="mainConstraintLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/main_constraint_layout_padding_horizontal</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">
+            @dimen/main_constraint_layout_padding_horizontal
+        </item>
     </style>
 
     <style name="navigationViewStyle">
@@ -43,12 +45,27 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_gravity">bottom</item>
+        <item name="labelVisibilityMode">labeled</item>
         <item name="itemIconTint">@color/bottom_navigation_item_color</item>
         <item name="itemTextColor">@color/bottom_navigation_item_color</item>
-        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/bottom_navigation_view_margin_horizontal</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">
+            @dimen/bottom_navigation_view_margin_horizontal
+        </item>
         <item name="android:layout_marginBottom">@dimen/bottom_navigation_view_margin_bottom</item>
         <item name="elevation">@dimen/bottom_navigation_view_elevation</item>
         <item name="itemBackground">@drawable/navigation_view_shape</item>
+    </style>
+
+    <style name="navigationViewStyle.mainNavigation">
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">
+            @dimen/main_bottom_navigation_view_margin_horizontal
+        </item>
+        <item name="android:layout_marginBottom">@dimen/main_bottom_navigation_view_margin_bottom
+        </item>
+        <item name="itemIconTint">@color/items_color</item>
+        <item name="itemTextColor">@color/items_color</item>
+        <item name="itemBackground">@android:color/transparent</item>
     </style>
 
     <style name="fabStyle">
@@ -66,7 +83,7 @@
         <item name="android:layout_marginBottom">@dimen/bottom_app_bar_margin_bottom</item>
         <item name="backgroundTint">@color/color_primary_dark</item>
         <item name="fabAlignmentMode">center</item>
-        <item name="hideOnScroll">true</item>
+        <item name="hideOnScroll">false</item>
         <item name="layout_scrollFlags">scroll|enterAlways</item>
     </style>
 
@@ -90,48 +107,69 @@
         <item name="android:background">@drawable/bottom_sheet_gradient</item>
         <item name="behavior_hideable">false</item>
         <item name="behavior_peekHeight">@dimen/bottom_sheet_peek_height</item>
-        <item name="layout_behavior">com.google.android.material.bottomsheet.BottomSheetBehavior</item>
+        <item name="layout_behavior">com.google.android.material.bottomsheet.BottomSheetBehavior
+        </item>
     </style>
 
     <style name="bottomSheetTextLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/bottom_sheet_text_layout_margin_horizontal</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">
+            @dimen/bottom_sheet_text_layout_margin_horizontal
+        </item>
         <item name="android:layout_marginTop">@dimen/bottom_sheet_text_layout_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/bottom_sheet_text_layout_margin_bottom</item>
+        <item name="android:layout_marginBottom">@dimen/bottom_sheet_text_layout_margin_bottom
+        </item>
         <item name="android:background">@drawable/bottom_sheet_text_shape</item>
     </style>
 
     <style name="bottomSheetDescriptionHeaderStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/bottom_sheet_description_header_margin_top</item>
+        <item name="android:layout_marginTop">@dimen/bottom_sheet_description_header_margin_top
+        </item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">
+            @dimen/bottom_sheet_description_text_margin_horizontal
+        </item>
         <item name="android:textColor">@color/text_color</item>
         <item name="android:textSize">@dimen/bottom_sheet_description_header_text_size</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
     </style>
 
     <style name="bottomSheetDescriptionTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/bottom_sheet_description_text_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/bottom_sheet_description_text_margin_bottom</item>
-        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/bottom_sheet_description_text_margin_horizontal</item>
+        <item name="android:layout_marginBottom">
+            @dimen/bottom_sheet_description_text_margin_bottom
+        </item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">
+            @dimen/bottom_sheet_description_text_margin_horizontal
+        </item>
         <item name="android:textColor">@color/second_text_color</item>
         <item name="android:textSize">@dimen/bottom_sheet_description_text_size</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
     </style>
 
     <style name="bottomSheetDescriptionHeaderStyle.setThemeHeaderViewStyle">
-        <item name="android:layout_marginStart">@dimen/set_theme_header_view_margin_start</item>
         <item name="android:layout_marginTop">@dimen/set_theme_header_view_margin_top</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="bottomSheetDescriptionHeaderStyle.dateEarthText">
         <item name="android:layout_marginTop">@dimen/earth_date_text_margin_top</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">
+            @dimen/earth_caption_text_padding_horizontal
+        </item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="bottomSheetDescriptionTextStyle.earthCaptionTextStyle">
         <item name="android:layout_marginTop">@dimen/earth_caption_text_margin_top</item>
-        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/earth_caption_text_margin_horizontal</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">
+            @dimen/earth_caption_text_padding_horizontal
+        </item>
     </style>
 </resources>

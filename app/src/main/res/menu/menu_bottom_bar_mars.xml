@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/appBarSettings"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/settings"
+        android:id="@+id/appBarCameras"
+        android:icon="@drawable/ic_change_mars_camera"
+        android:title="@string/cameras"
         app:showAsAction="always" />
 
     <item
@@ -24,15 +24,16 @@
         tools:ignore="AlwaysShowAction" />
 
     <item
-        android:id="@+id/appBarEarth"
-        android:icon="@drawable/ic_earth"
-        android:title="@string/menu_bottom_earth"
+        android:id="@+id/nullItemThree"
+        android:checkable="false"
+        android:title=""
         app:showAsAction="always"
         tools:ignore="AlwaysShowAction" />
 
     <item
-        android:id="@+id/appBarMars"
-        android:icon="@drawable/ic_mars"
-        android:title="@string/menu_bottom_mars"
-        app:showAsAction="always" />
+        android:id="@+id/nullItemFour"
+        android:checkable="false"
+        android:title=""
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
 </menu>

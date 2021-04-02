@@ -7,6 +7,7 @@
     </style>
 
     <style name="daysChipsStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textAlignment">center</item>
         <item name="chipBackgroundColor">@drawable/chip_background_color</item>
         <item name="rippleColor">@color/ripple_color</item>
         <item name="android:textColor">@drawable/chip_text_color</item>
@@ -16,7 +17,7 @@
         <item name="counterEnabled">true</item>
         <item name="counterMaxLength">20</item>
         <item name="endIconCheckable">true</item>
-        <item name="endIconDrawable">@drawable/ic_wikipedia</item>
+        <item name="endIconDrawable">@drawable/ic_search</item>
         <item name="endIconMode">custom</item>
     </style>
 </resources>

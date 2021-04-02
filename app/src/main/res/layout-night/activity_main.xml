@@ -11,6 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mainNavigationView"
+        style="@style/navigationViewStyle.mainNavigation"
+        android:visibility="visible"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_bar" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/marsNavigationView"
+        style="@style/navigationViewStyle.mainNavigation"
+        android:visibility="gone"
+        app:menu="@menu/menu_bottom_bar_mars" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         style="@style/fabStyle"
@@ -26,14 +39,20 @@
         android:id="@+id/marsCamerasNavigationView"
         style="@style/navigationViewStyle"
         android:visibility="gone"
-        app:menu="@menu/menu_mars_cameras"/>
+        app:menu="@menu/menu_mars_cameras" />
 
     <View
-        android:id="@+id/viewToHideCamerasChips"
+        android:id="@+id/viewToHideCamerasMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_gray"
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
+    <View
+        style="@style/settingsFragmentLineViewStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <include layout="@layout/bottom_sheet_layout" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

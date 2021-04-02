@@ -2,9 +2,9 @@
     <string name="app_name">NASA App</string>
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="search_wiki">Найти в Википедии</string>
-    <string name="wiki_helper_text">Поищите термин в википедии</string>
+    <string name="wiki_helper_text">Поищите термин в Википедии</string>
     <string name="favourite">favourite</string>
-    <string name="settings">settings</string>
+    <string name="settings">Настройки</string>
     <string name="home">Home</string>
 
     <string name="today_text">Сегодня</string>
@@ -13,8 +13,9 @@
     <string name="set_theme_header_view">Установить тему</string>
     <string name="switch_button_light_theme_text">Светлая тема</string>
     <string name="switch_button_dark_theme_text">Темная тема</string>
-    <string name="menu_bottom_earth">Фотографии Земли</string>
-    <string name="menu_bottom_mars">Фотографии Марса</string>
+    <string name="menu_bottom_earth">Земля</string>
+    <string name="menu_bottom_mars">Марс</string>
+    <string name="cameras">Камеры</string>
 
     <string name="fhaz">Front Hazard Avoidance Camera</string>
     <string name="rhaz">Rear Hazard Avoidance Camera</string>

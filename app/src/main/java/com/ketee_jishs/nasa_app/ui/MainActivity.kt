@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
 
-        setAnotherBottomAppBar()
+        setSettingsBottomAppBar()
         initTheme()
         bottomSheetContainer.visibility = View.GONE
     }
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
 
-        setAnotherBottomAppBar()
+        setSettingsBottomAppBar()
         setMarsBottomMenu()
         initTheme()
         bottomSheetContainer.visibility = View.GONE
@@ -136,15 +136,15 @@ class MainActivity : AppCompatActivity() {
     private fun setBottomAppBar() {
         when (PictureOfTheDayFragment.isMain) {
             true -> setMainBottomAppBar()
-            false -> setAnotherBottomAppBar()
+            false -> setSettingsBottomAppBar()
         }
     }
 
     private fun setMainBottomAppBar() {
         PictureOfTheDayFragment.isMain = true
+        bottomAppBar.navigationIcon = null
 
         bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-        bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
 
         fab.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_plus_fab))
         fab.setOnClickListener {
@@ -154,36 +154,33 @@ class MainActivity : AppCompatActivity() {
             )
         } // Потом придумаю что-нибудь другое (UPD: пока не придумала, но кнопку хочу оставить)
 
-        bottomAppBar.navigationIcon = ContextCompat.getDrawable(
-            applicationContext,
-            R.drawable.ic_settings
-        )
-
-        when (getThemePrefs()) {
-            THEME_DAY -> bottomAppBar.navigationIcon?.setTint(
-                ContextCompat.getColor(
-                    applicationContext,
-                    R.color.navigation_icon_day_color
-                )
-            )
-            THEME_NIGHT -> bottomAppBar.navigationIcon?.setTint(
-                ContextCompat.getColor(
-                    applicationContext,
-                    R.color.navigation_icon_night_color
-                )
-            )
-        }
-
-        bottomAppBar.setNavigationOnClickListener {
-            setScreen(goToSettingsScreen(), SETTINGS_SCREEN)
+        marsNavigationView.visibility = View.GONE
+        mainNavigationView.visibility = View.VISIBLE
+        mainNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.appBarEarth -> {
+                    goToEarthScreen()
+                    PictureOfTheDayFragment.isMain = false
+                }
+                R.id.appBarMars -> {
+                    goToMarsScreen()
+                    PictureOfTheDayFragment.isMain = false
+                }
+                R.id.appBarSettings -> {
+                    setScreen(goToSettingsScreen(), SETTINGS_SCREEN)
+                    PictureOfTheDayFragment.isMain = false
+                }
+            }
+            true
         }
     }
 
-    private fun setAnotherBottomAppBar() {
+    private fun setSettingsBottomAppBar() {
         PictureOfTheDayFragment.isMain = false
         bottomAppBar.navigationIcon = null
         bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-        bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
+        mainNavigationView.visibility = View.GONE
+        marsNavigationView.visibility = View.GONE
 
         fab.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_back_fab))
         fab.setOnClickListener {
@@ -193,34 +190,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setMarsBottomMenu() {
-        bottomAppBar.navigationIcon = ContextCompat.getDrawable(
-            applicationContext,
-            R.drawable.ic_change_mars_camera
-        )
-
-        when (getThemePrefs()) {
-            THEME_DAY -> bottomAppBar.navigationIcon?.setTint(
-                ContextCompat.getColor(
-                    applicationContext,
-                    R.color.navigation_icon_day_color
-                )
-            )
-            THEME_NIGHT -> bottomAppBar.navigationIcon?.setTint(
-                ContextCompat.getColor(
-                    applicationContext,
-                    R.color.navigation_icon_night_color
-                )
-            )
+        mainNavigationView.visibility = View.GONE
+        marsNavigationView.visibility = View.VISIBLE
+        marsNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.appBarCameras -> {
+                    bottomAppBar.visibility = View.GONE
+                    fab.visibility = View.GONE
+                    marsNavigationView.visibility = View.GONE
+                    marsCamerasNavigationView.visibility = View.VISIBLE
+                    viewToHideCamerasMenu.visibility = View.VISIBLE
+                }
+            }
+            true
         }
 
-        bottomAppBar.setNavigationOnClickListener {
-            bottomAppBar.visibility = View.GONE
-            fab.visibility = View.GONE
-            marsCamerasNavigationView.visibility = View.VISIBLE
-            viewToHideCamerasChips.visibility = View.VISIBLE
-        }
-
-        // Потом возможно придумаю другой вариант реализации выбора камеры ровера
         marsCamerasNavigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.FHAZ -> {
@@ -228,9 +212,10 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     bottomAppBar.visibility = View.VISIBLE
                     fab.visibility = View.VISIBLE
+                    marsNavigationView.visibility = View.VISIBLE
                     PictureOfTheDayFragment.isMain = false
                     marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasChips.visibility = View.GONE
+                    viewToHideCamerasMenu.visibility = View.GONE
                 }
 
                 R.id.RHAZ -> {
@@ -238,9 +223,10 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     bottomAppBar.visibility = View.VISIBLE
                     fab.visibility = View.VISIBLE
+                    marsNavigationView.visibility = View.VISIBLE
                     PictureOfTheDayFragment.isMain = false
                     marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasChips.visibility = View.GONE
+                    viewToHideCamerasMenu.visibility = View.GONE
                 }
 
                 R.id.MAST -> {
@@ -248,9 +234,10 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     bottomAppBar.visibility = View.VISIBLE
                     fab.visibility = View.VISIBLE
+                    marsNavigationView.visibility = View.VISIBLE
                     PictureOfTheDayFragment.isMain = false
                     marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasChips.visibility = View.GONE
+                    viewToHideCamerasMenu.visibility = View.GONE
                 }
 
                 R.id.CHEMCAM -> {
@@ -258,9 +245,10 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     bottomAppBar.visibility = View.VISIBLE
                     fab.visibility = View.VISIBLE
+                    marsNavigationView.visibility = View.VISIBLE
                     PictureOfTheDayFragment.isMain = false
                     marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasChips.visibility = View.GONE
+                    viewToHideCamerasMenu.visibility = View.GONE
                 }
 
                 R.id.MAHLI -> {
@@ -268,9 +256,10 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     bottomAppBar.visibility = View.VISIBLE
                     fab.visibility = View.VISIBLE
+                    marsNavigationView.visibility = View.VISIBLE
                     PictureOfTheDayFragment.isMain = false
                     marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasChips.visibility = View.GONE
+                    viewToHideCamerasMenu.visibility = View.GONE
                 }
 
                 R.id.MARDI -> {
@@ -278,9 +267,10 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     bottomAppBar.visibility = View.VISIBLE
                     fab.visibility = View.VISIBLE
+                    marsNavigationView.visibility = View.VISIBLE
                     PictureOfTheDayFragment.isMain = false
                     marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasChips.visibility = View.GONE
+                    viewToHideCamerasMenu.visibility = View.GONE
                 }
 
                 R.id.NAVCAM -> {
@@ -288,19 +278,27 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     bottomAppBar.visibility = View.VISIBLE
                     fab.visibility = View.VISIBLE
+                    marsNavigationView.visibility = View.VISIBLE
                     PictureOfTheDayFragment.isMain = false
                     marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasChips.visibility = View.GONE
+                    viewToHideCamerasMenu.visibility = View.GONE
                 }
             }
             true
         }
 
-        viewToHideCamerasChips.setOnClickListener {
+        viewToHideCamerasMenu.setOnClickListener {
+            marsNavigationView.visibility = View.VISIBLE
             bottomAppBar.visibility = View.VISIBLE
             fab.visibility = View.VISIBLE
             marsCamerasNavigationView.visibility = View.GONE
-            viewToHideCamerasChips.visibility = View.GONE
+            viewToHideCamerasMenu.visibility = View.GONE
+        }
+
+        fab.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_back_fab))
+        fab.setOnClickListener {
+            PictureOfTheDayFragment.isMain = true
+            setScreen(goToMainScreen(), PICTURE_SCREEN)
         }
     }
 
@@ -313,11 +311,13 @@ class MainActivity : AppCompatActivity() {
                     BottomSheetBehavior.STATE_COLLAPSED -> {
                         fab.visibility = View.VISIBLE
                         bottomAppBar.visibility = View.VISIBLE
+                        mainNavigationView.visibility = View.VISIBLE
                     }
                     else -> {
                         initData()
                         fab.visibility = View.GONE
                         bottomAppBar.visibility = View.GONE
+                        mainNavigationView.visibility = View.GONE
                     }
                 }
             }

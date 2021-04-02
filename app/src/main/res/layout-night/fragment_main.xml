@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="?attr/backgroundColor"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/main"
-            style="@style/mainConstraintLayoutStyle">
+            style="@style/mainConstraintLayoutStyle"
+            app:layoutDescription="@xml/motion_scene">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayout"
                 android:layout_width="@dimen/wikipedia_text_input_width"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/wikipedia_text_input_margin_start"
                 android:layout_marginTop="@dimen/wikipedia_text_input_margin_top"
+                android:layout_marginBottom="11dp"
                 android:hint="@string/search_wiki"
                 app:helperText="@string/wiki_helper_text"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
+                app:layout_constraintBottom_toTopOf="@+id/chipMainGroup"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.473"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/wikipediaButton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.03">
 
@@ -38,36 +41,48 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipMainGroup"
                 style="@style/chipGroupStyle"
-                app:layout_constraintStart_toStartOf="@+id/inputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/inputLayout"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/todayChip"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/chip_layout_width"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/today_text" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/yesterdayChip"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/chip_layout_width"
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:text="@string/yesterday_text" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/dayBeforeYesterdayChip"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/chip_layout_width"
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:text="@string/day_before_yesterday_text" />
             </com.google.android.material.chip.ChipGroup>
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/wikipediaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/wikipedia_button_margin_top"
+                app:layout_constraintBottom_toBottomOf="@+id/inputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/inputLayout"
+                app:srcCompat="@drawable/ic_wikipedia" />
+
             <com.ketee_jishs.nasa_app.util.EquilateralImageView
                 android:id="@+id/imageView"
                 style="@style/equilateralImageViewStyle"
                 android:contentDescription="@string/photo_of_the_day_stub"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.157"
@@ -76,24 +91,16 @@
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_no_photo_vector" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/noDataTextView"
-                style="@style/bottomSheetDescriptionTextStyle.earthCaptionTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                tools:visibility="gone" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
+        </androidx.constraintlayout.motion.widget.MotionLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

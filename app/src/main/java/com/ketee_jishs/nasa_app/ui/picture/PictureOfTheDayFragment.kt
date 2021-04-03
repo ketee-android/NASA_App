@@ -45,7 +45,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_main_start, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,8 +92,8 @@ class PictureOfTheDayFragment : Fragment() {
                 } else {
                     imageView.load(url) {
                         lifecycle(this@PictureOfTheDayFragment)
-                        error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
+                        error (R.drawable.ic_load_error_vector)
                     }
                     progressBar.visibility = View.GONE
                 }

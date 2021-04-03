@@ -4,35 +4,35 @@
     <item
         android:id="@+id/FHAZ"
         android:title="@string/fhaz"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/RHAZ"
         android:title="@string/rhaz"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/MAST"
         android:title="@string/mast"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/CHEMCAM"
         android:title="@string/chemcam"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/MAHLI"
         android:title="@string/mahli"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/MARDI"
         android:title="@string/mardi"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/NAVCAM"
         android:title="@string/navcam"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 </menu>

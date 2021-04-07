@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_main"
     tools:context=".ui.MainActivity">
 
     <FrameLayout
@@ -15,7 +16,6 @@
         android:id="@+id/mainNavigationView"
         style="@style/navigationViewStyle.mainNavigation"
         android:visibility="visible"
-        app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_bottom_bar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

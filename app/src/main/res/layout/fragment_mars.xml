@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_mars"
     android:background="?attr/backgroundColor">
 
     <androidx.core.widget.NestedScrollView
@@ -14,13 +15,14 @@
             android:id="@+id/main"
             style="@style/mainConstraintLayoutStyle">
 
-            <com.ketee_jishs.nasa_app.util.EquilateralImageView
+            <ImageView
                 android:id="@+id/marsImageView"
                 style="@style/equilateralImageViewStyle"
+                android:scaleType="center"
                 android:contentDescription="@string/photo_of_the_day_stub"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.157"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
@@ -31,8 +33,8 @@
                 style="@style/bottomSheetDescriptionHeaderStyle.dateEarthText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/marsImageView"
+                app:layout_constraintStart_toStartOf="@+id/marsImageView"
                 app:layout_constraintTop_toBottomOf="@+id/marsImageView"
                 tools:text="Mast Camera" />
 
@@ -41,8 +43,8 @@
                 style="@style/bottomSheetDescriptionTextStyle.earthCaptionTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cameraName"
+                app:layout_constraintStart_toStartOf="@+id/cameraName"
                 app:layout_constraintTop_toBottomOf="@+id/cameraName"
                 tools:text="Дата съемки: 2021-03-28" />
 

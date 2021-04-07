@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.ketee_jishs.nasa_app.ui.earth.EarthAPI
 import com.ketee_jishs.nasa_app.ui.mars.MarsAPI
 import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayAPI
+import com.ketee_jishs.nasa_app.ui.sun.SunAPI
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,6 +40,15 @@ class NasaRetrofitImpl {
             .client(createOkHttpClient(PODInterceptor()))
             .build()
         return earthRetrofit.create(MarsAPI::class.java)
+    }
+
+    fun getSunRetrofitImpl(): SunAPI {
+        val sunRetrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+            .client(createOkHttpClient(PODInterceptor()))
+            .build()
+        return sunRetrofit.create(SunAPI::class.java)
     }
 
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {

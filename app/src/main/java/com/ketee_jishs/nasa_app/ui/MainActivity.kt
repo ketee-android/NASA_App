@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +24,7 @@ import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayData
 import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayFragment
 import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayViewModel
 import com.ketee_jishs.nasa_app.ui.settings.SettingsFragment
+import com.ketee_jishs.nasa_app.ui.sun.SunFragment
 import com.ketee_jishs.nasa_app.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
@@ -58,25 +62,8 @@ class MainActivity : AppCompatActivity() {
         initData()
         initTheme()
         setBottomAppBar()
-        
-        setBottomSheetBehavior(findViewById(R.id.bottomSheetContainer))
-        onMenuItemClickListener()
-    }
 
-    private fun onMenuItemClickListener() {
-        bottomAppBar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.appBarEarth -> {
-                    goToEarthScreen()
-                    PictureOfTheDayFragment.isMain = false
-                }
-                R.id.appBarMars -> {
-                    goToMarsScreen()
-                    PictureOfTheDayFragment.isMain = false
-                }
-            }
-            true
-        }
+        setBottomSheetBehavior(findViewById(R.id.bottomSheetContainer))
     }
 
     private fun Activity.toast(string: String?) {
@@ -133,6 +120,17 @@ class MainActivity : AppCompatActivity() {
         bottomSheetContainer.visibility = View.GONE
     }
 
+    private fun goToSunScreen() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, SunFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+
+        setSettingsBottomAppBar()
+        bottomSheetContainer.visibility = View.GONE
+    }
+
     private fun setBottomAppBar() {
         when (PictureOfTheDayFragment.isMain) {
             true -> setMainBottomAppBar()
@@ -166,6 +164,10 @@ class MainActivity : AppCompatActivity() {
                     goToMarsScreen()
                     PictureOfTheDayFragment.isMain = false
                 }
+                R.id.appBarSun -> {
+                    goToSunScreen()
+                    PictureOfTheDayFragment.isMain = false
+                }
                 R.id.appBarSettings -> {
                     setScreen(goToSettingsScreen(), SETTINGS_SCREEN)
                     PictureOfTheDayFragment.isMain = false
@@ -190,16 +192,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setMarsBottomMenu() {
+        var marsNavigationViewIsVisible = false
+
         mainNavigationView.visibility = View.GONE
         marsNavigationView.visibility = View.VISIBLE
+
         marsNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.appBarCameras -> {
                     bottomAppBar.visibility = View.GONE
                     fab.visibility = View.GONE
                     marsNavigationView.visibility = View.GONE
-                    marsCamerasNavigationView.visibility = View.VISIBLE
+
+                    viewToHideCamerasMenu.alpha = 0f
                     viewToHideCamerasMenu.visibility = View.VISIBLE
+                    viewToHideCamerasMenu.animate().alpha(1f).duration = 300
+
+                    marsNavigationViewIsVisible = !marsNavigationViewIsVisible
+                    TransitionManager.beginDelayedTransition(activity_main, Slide(Gravity.BOTTOM))
+                    marsCamerasNavigationView.visibility =
+                        if (marsNavigationViewIsVisible) View.VISIBLE else View.GONE
                 }
             }
             true
@@ -207,82 +219,13 @@ class MainActivity : AppCompatActivity() {
 
         marsCamerasNavigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.FHAZ -> {
-                    MainMarsFragment.camera = "FHAZ"
-                    goToMarsScreen()
-                    bottomAppBar.visibility = View.VISIBLE
-                    fab.visibility = View.VISIBLE
-                    marsNavigationView.visibility = View.VISIBLE
-                    PictureOfTheDayFragment.isMain = false
-                    marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasMenu.visibility = View.GONE
-                }
-
-                R.id.RHAZ -> {
-                    MainMarsFragment.camera = "RHAZ"
-                    goToMarsScreen()
-                    bottomAppBar.visibility = View.VISIBLE
-                    fab.visibility = View.VISIBLE
-                    marsNavigationView.visibility = View.VISIBLE
-                    PictureOfTheDayFragment.isMain = false
-                    marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasMenu.visibility = View.GONE
-                }
-
-                R.id.MAST -> {
-                    MainMarsFragment.camera = "MAST"
-                    goToMarsScreen()
-                    bottomAppBar.visibility = View.VISIBLE
-                    fab.visibility = View.VISIBLE
-                    marsNavigationView.visibility = View.VISIBLE
-                    PictureOfTheDayFragment.isMain = false
-                    marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasMenu.visibility = View.GONE
-                }
-
-                R.id.CHEMCAM -> {
-                    MainMarsFragment.camera = "CHEMCAM"
-                    goToMarsScreen()
-                    bottomAppBar.visibility = View.VISIBLE
-                    fab.visibility = View.VISIBLE
-                    marsNavigationView.visibility = View.VISIBLE
-                    PictureOfTheDayFragment.isMain = false
-                    marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasMenu.visibility = View.GONE
-                }
-
-                R.id.MAHLI -> {
-                    MainMarsFragment.camera = "MAHLI"
-                    goToMarsScreen()
-                    bottomAppBar.visibility = View.VISIBLE
-                    fab.visibility = View.VISIBLE
-                    marsNavigationView.visibility = View.VISIBLE
-                    PictureOfTheDayFragment.isMain = false
-                    marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasMenu.visibility = View.GONE
-                }
-
-                R.id.MARDI -> {
-                    MainMarsFragment.camera = "MARDI"
-                    goToMarsScreen()
-                    bottomAppBar.visibility = View.VISIBLE
-                    fab.visibility = View.VISIBLE
-                    marsNavigationView.visibility = View.VISIBLE
-                    PictureOfTheDayFragment.isMain = false
-                    marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasMenu.visibility = View.GONE
-                }
-
-                R.id.NAVCAM -> {
-                    MainMarsFragment.camera = "NAVCAM"
-                    goToMarsScreen()
-                    bottomAppBar.visibility = View.VISIBLE
-                    fab.visibility = View.VISIBLE
-                    marsNavigationView.visibility = View.VISIBLE
-                    PictureOfTheDayFragment.isMain = false
-                    marsCamerasNavigationView.visibility = View.GONE
-                    viewToHideCamerasMenu.visibility = View.GONE
-                }
+                R.id.FHAZ -> changeRoverCamera("FHAZ")
+                R.id.RHAZ -> changeRoverCamera("RHAZ")
+                R.id.MAST -> changeRoverCamera("MAST")
+                R.id.CHEMCAM -> changeRoverCamera("CHEMCAM")
+                R.id.MAHLI -> changeRoverCamera("MAHLI")
+                R.id.MARDI -> changeRoverCamera("MARDI")
+                R.id.NAVCAM -> changeRoverCamera("NAVCAM")
             }
             true
         }
@@ -291,8 +234,11 @@ class MainActivity : AppCompatActivity() {
             marsNavigationView.visibility = View.VISIBLE
             bottomAppBar.visibility = View.VISIBLE
             fab.visibility = View.VISIBLE
-            marsCamerasNavigationView.visibility = View.GONE
             viewToHideCamerasMenu.visibility = View.GONE
+
+            marsNavigationViewIsVisible = !marsNavigationViewIsVisible
+            marsCamerasNavigationView.visibility =
+                if (marsNavigationViewIsVisible) View.VISIBLE else View.GONE
         }
 
         fab.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_back_fab))
@@ -300,6 +246,17 @@ class MainActivity : AppCompatActivity() {
             PictureOfTheDayFragment.isMain = true
             setScreen(goToMainScreen(), PICTURE_SCREEN)
         }
+    }
+
+    private fun changeRoverCamera(cameraName: String) {
+        MainMarsFragment.camera = cameraName
+        goToMarsScreen()
+        bottomAppBar.visibility = View.VISIBLE
+        fab.visibility = View.VISIBLE
+        marsNavigationView.visibility = View.VISIBLE
+        PictureOfTheDayFragment.isMain = false
+        marsCamerasNavigationView.visibility = View.GONE
+        viewToHideCamerasMenu.visibility = View.GONE
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {

@@ -67,9 +67,10 @@ dependencies {
     //noinspection GradleDependency
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
 
-    //Koil image download
+    //Koil and Picasso image download
     //noinspection GradleDependency
-    implementation("io.coil-kt:coil:0.9.2")
+    implementation 'io.coil-kt:coil:0.9.2'
+    implementation 'com.squareup.picasso:picasso:2.8'
 
     //Test
     implementation fileTree(dir: 'libs', include: ['*.jar'])

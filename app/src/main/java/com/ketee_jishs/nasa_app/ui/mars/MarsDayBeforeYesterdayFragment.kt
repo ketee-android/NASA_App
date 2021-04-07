@@ -5,10 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.api.load
 import com.ketee_jishs.nasa_app.R
 import com.ketee_jishs.nasa_app.util.getForthDate
@@ -55,8 +60,9 @@ class MarsDayBeforeYesterdayFragment : Fragment() {
                             placeholder(R.drawable.ic_no_photo_vector)
                         }
                         cameraName.text = serverResponseData.camera.cameraName
-                        dateMarsView.text = "Дата съемки: ${serverResponseData.earthDate}"
+                        dateMarsView.text = "Date: ${serverResponseData.earthDate}"
                         marsProgressBar.visibility = View.GONE
+                        expandPicture()
                     }
                 }
                 is MarsData.Loading -> {
@@ -69,9 +75,26 @@ class MarsDayBeforeYesterdayFragment : Fragment() {
             }
         } catch (e: Exception) {
             marsImageView.load(R.drawable.ic_load_error_vector)
-            cameraName.text = "Данные пока не пришли"
-            dateMarsView.text = "Попробуйте выбрать другую камеру или посмореть фото за другие дни"
+            cameraName.text = "The data has not yet arrived"
+            dateMarsView.text = "Try to choose a different camera or see photos from other days"
             marsProgressBar.visibility = View.GONE
+        }
+    }
+
+    private fun expandPicture() {
+        var isExpanded = false
+
+        marsImageView.setOnClickListener {
+            isExpanded = !isExpanded
+            TransitionManager.beginDelayedTransition(fragment_mars, TransitionSet()
+                .addTransition(ChangeBounds())
+                .addTransition(ChangeImageTransform())
+            )
+
+            val params: ViewGroup.LayoutParams = marsImageView.layoutParams
+            params.height =
+                if (isExpanded) 1500 else ViewGroup.LayoutParams.WRAP_CONTENT
+            marsImageView.scaleType = if (isExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.FIT_CENTER
         }
     }
 

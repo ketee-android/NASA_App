@@ -32,10 +32,10 @@ class MainMarsViewPagerAdapter(fragmentManager: FragmentManager) :
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when(position) {
-            0 -> "Сегодня"
-            1 -> "Вчера"
-            2 -> "Позавчера"
-            else -> "Сегодня"
+            0 -> "            Today            "
+            1 -> "    Yesterday    "
+            2 -> "Day before YD"
+            else -> "      Today      "
         }
     }
 }

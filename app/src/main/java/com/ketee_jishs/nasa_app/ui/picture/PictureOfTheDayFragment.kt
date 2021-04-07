@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -90,12 +91,25 @@ class PictureOfTheDayFragment : Fragment() {
                 if (url.isNullOrEmpty()) {
                     toast("Link is empty")
                 } else {
-                    imageView.load(url) {
-                        lifecycle(this@PictureOfTheDayFragment)
-                        placeholder(R.drawable.ic_no_photo_vector)
-                        error (R.drawable.ic_load_error_vector)
+                    if (serverResponseData.mediaType.equals("image")) {
+                        imageView.visibility = View.VISIBLE
+                        videoView.visibility = View.GONE
+                        imageView.load(url) {
+                            lifecycle(this@PictureOfTheDayFragment)
+                            placeholder(R.drawable.ic_no_photo_vector)
+                            error (R.drawable.ic_load_error_vector)
+                        }
+                        progressBar.visibility = View.GONE
                     }
-                    progressBar.visibility = View.GONE
+                    if (serverResponseData.mediaType.equals("video")) {
+                        imageView.visibility = View.GONE
+                        videoView.visibility = View.VISIBLE
+                        videoView.setVideoURI(Uri.parse(url))
+                        videoView.setMediaController(MediaController(context))
+                        videoView.requestFocus(0)
+                        videoView.start()
+                        progressBar.visibility = View.GONE
+                    }
                 }
             }
             is PictureOfTheDayData.Loading -> {

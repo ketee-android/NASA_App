@@ -2,11 +2,12 @@
 <resources>
     <dimen name="equilateral_layout_margin_top">15dp</dimen>
     <dimen name="chip_group_margin_top">10dp</dimen>
-    <dimen name="chip_layout_width">110dp</dimen>
+    <dimen name="chip_layout_width">105dp</dimen>
     <dimen name="main_constraint_layout_padding_horizontal">10dp</dimen>
     <dimen name="wikipedia_text_input_width">0dp</dimen>
     <dimen name="wikipedia_text_input_margin_top">5dp</dimen>
     <dimen name="wikipedia_text_input_margin_start">7dp</dimen>
+    <dimen name="wikipedia_text_input_margin_bottom">11dp</dimen>
     <dimen name="navigation_view_margin_horizontal">8dp</dimen>
     <dimen name="navigation_view_margin_top">8dp</dimen>
     <dimen name="bottom_app_bar_margin_bottom">14dp</dimen>
@@ -37,5 +38,13 @@
     <dimen name="main_bottom_navigation_view_margin_horizontal">0dp</dimen>
     <dimen name="main_bottom_navigation_view_width">165dp</dimen>
     <dimen name="bottom_navigation_view_elevation">1000dp</dimen>
-    <dimen name="wikipedia_button_margin_top">12dp</dimen>
+    <dimen name="wikipedia_button_margin_bottom">14dp</dimen>
+    <dimen name="wikipedia_button_margin_top">4dp</dimen>
+    <dimen name="sun_item_margins">12dp</dimen>
+    <dimen name="sun_item_padding_bottom">4dp</dimen>
+    <dimen name="recycler_padding_bottom">105dp</dimen>
+    <dimen name="earth_rv_separation_line_margin_top">12dp</dimen>
+    <dimen name="earth_rv_separation_line_layout_height">1sp</dimen>
+    <dimen name="earth_item_padding_bottom">12dp</dimen>
+    <dimen name="earth_progress_bar_margin_top">200dp</dimen>
 </resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/earth_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        style="@style/earthRecyclerViewSeparationLineStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/captionText" />
+
+    <com.ketee_jishs.nasa_app.util.EquilateralImageView
+        android:id="@+id/earthImageView"
+        style="@style/equilateralImageViewStyle"
+        android:contentDescription="@string/photo_of_the_day_stub"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_no_photo_vector" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dateText"
+        style="@style/bottomSheetDescriptionHeaderStyle.dateEarthText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/earthImageView"
+        app:layout_constraintStart_toStartOf="@+id/earthImageView"
+        app:layout_constraintTop_toBottomOf="@+id/earthImageView"
+        tools:text="Date: 2021-03-27 00:50:27" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/captionText"
+        style="@style/bottomSheetDescriptionTextStyle.earthCaptionTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dateText"
+        app:layout_constraintStart_toStartOf="@+id/dateText"
+        app:layout_constraintTop_toBottomOf="@+id/dateText"
+        tools:text="This image was taken by NASA's EPIC camera onboard the NOAA DSCOVR spacecraft" />
+</androidx.constraintlayout.widget.ConstraintLayout>

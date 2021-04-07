@@ -4,5 +4,5 @@
     <solid android:color="@color/navigation_menu_background"/>
     <stroke
         android:width="10dp"
-        android:color="@color/transparent"/>
+        android:color="@android:color/transparent"/>
 </shape>

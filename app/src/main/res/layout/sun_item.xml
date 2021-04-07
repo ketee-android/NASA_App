@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/sunRecyclerViewItemStyle">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cmeTime"
+        style="@style/bottomSheetDescriptionTextStyle.CMETime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Date: 2021-03-05T17:24Z" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cmeNote"
+        style="@style/bottomSheetDescriptionTextStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cmeTime"
+        tools:text="Associated with an eruption from the unnumbered
+        AR ~N29E85, visible in SDO/AIA 171/193/304 beginning
+        2021-03-05T16:22Z.  From the field line motion in SDO/AIA 171,
+        this eruption appears to be directed toward lower latitude." />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cmeAnalysesNote"
+        style="@style/bottomSheetDescriptionTextStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cmeNote"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="CME is faint, does not have a well-defined leading
+        edge in C3, and cannot be seen in Cor2A images." />
+</androidx.constraintlayout.widget.ConstraintLayout>

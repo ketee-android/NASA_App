@@ -153,11 +153,23 @@
         <item name="android:textAlignment">viewStart</item>
     </style>
 
+    <style name="bottomSheetDescriptionHeaderStyle.notesHeaderStyle">
+        <item name="android:layout_marginTop">@dimen/notes_header_margin_top</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/items_color</item>
+    </style>
+
     <style name="bottomSheetDescriptionHeaderStyle.dateEarthText">
         <item name="android:layout_marginTop">@dimen/earth_date_text_margin_top</item>
         <item name="android:paddingStart">@dimen/earth_caption_text_padding_horizontal</item>
         <item name="android:paddingEnd">@dimen/earth_caption_text_padding_horizontal</item>
         <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="bottomSheetDescriptionHeaderStyle.dateEarthText.dialogTitleStyle">
+        <item name="android:layout_marginTop">@dimen/dialog_title_margin_top</item>
+        <item name="android:paddingStart">@dimen/dialog_title_padding_start</item>
     </style>
 
     <style name="bottomSheetDescriptionTextStyle.earthCaptionTextStyle">
@@ -173,7 +185,7 @@
         <item name="android:layout_marginStart">@dimen/sun_item_margins</item>
         <item name="android:layout_marginEnd">@dimen/sun_item_margins</item>
         <item name="android:paddingBottom">@dimen/sun_item_padding_bottom</item>
-        <item name="android:background">@drawable/sun_item_background</item>
+        <item name="android:background">@drawable/recycler_view_item_background</item>
         <item name="android:orientation">vertical</item>
         <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
     </style>
@@ -183,5 +195,72 @@
         <item name="android:layout_height">@dimen/earth_rv_separation_line_layout_height</item>
         <item name="android:layout_marginTop">@dimen/earth_rv_separation_line_margin_top</item>
         <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="notesRecyclerViewItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/notes_item_margin_top</item>
+        <item name="android:layout_marginStart">@dimen/notes_item_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/notes_item_margin_horizontal</item>
+        <item name="android:background">@drawable/recycler_view_item_background</item>
+    </style>
+
+    <style name="bottomSheetDescriptionHeaderStyle.noteHeaderTextStyle">
+        <item name="android:layout_marginTop">@dimen/note_body_text_margin_top</item>
+        <item name="android:paddingStart">@dimen/note_body_text_padding</item>
+        <item name="android:paddingEnd">@dimen/note_body_text_padding</item>
+        <item name="android:textSize">@dimen/note_header_text_size</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="bottomSheetDescriptionTextStyle.noteBodyTextStyle">
+        <item name="android:layout_marginTop">@dimen/earth_caption_text_margin_top</item>
+        <item name="android:paddingStart">@dimen/note_body_text_padding</item>
+        <item name="android:paddingEnd">@dimen/note_body_text_padding</item>
+        <item name="android:paddingBottom">@dimen/note_body_text_padding</item>
+        <item name="android:textSize">@dimen/note_body_text_size</item>
+    </style>
+
+    <style name="bottomSheetDescriptionTextStyle.noteDateStyle">
+        <item name="android:layout_marginTop">@dimen/note_date_margin_top</item>
+        <item name="android:paddingStart">@dimen/note_date_padding_start</item>
+        <item name="android:paddingBottom">@dimen/note_date_padding</item>
+        <item name="android:textSize">@dimen/note_date_text_size</item>
+    </style>
+
+    <style name="wikipediaTextInputLayoutStyle.dialogHeaderInputLayoutStyle">
+        <item name="endIconCheckable">false</item>
+        <item name="endIconDrawable">@null</item>
+        <item name="counterMaxLength">30</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/note_dialog_text_input_margin_start</item>
+        <item name="android:layout_marginEnd">@dimen/note_dialog_text_input_margin_end</item>
+        <item name="android:layout_marginTop">@dimen/note_dialog_text_input_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/note_dialog_text_input_margin_bottom</item>
+    </style>
+
+    <style name="wikipediaTextInputLayoutStyle.dialogHeaderInputLayoutStyle.dialogBodyInputLayoutStyle">
+        <item name="counterEnabled">false</item>
+        <item name="endIconMode">custom</item>
+        <item name="android:layout_marginTop">@dimen/note_dialog_body_text_input_margin_top</item>
+    </style>
+
+    <style name="dialogOkButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dialog_ok_button_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/dialog_ok_button_margin_bottom</item>
+        <item name="android:paddingStart">@dimen/dialog_ok_button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/dialog_ok_button_padding_horizontal</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="dialogOkButtonStyle.dialogCancelButtonStyle">
+        <item name="android:layout_marginEnd">@dimen/dialog_cancel_button_margin_end</item>
     </style>
 </resources>

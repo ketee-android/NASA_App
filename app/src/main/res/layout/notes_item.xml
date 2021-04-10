@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notesItem"
+    style="@style/notesRecyclerViewItemStyle">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/noteItemHeader"
+        style="@style/bottomSheetDescriptionHeaderStyle.noteHeaderTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteNoteButton"
+        tools:text="Two Clusters and a Comet" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/noteItemBody"
+        style="@style/bottomSheetDescriptionTextStyle.noteBodyTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteItemHeader"
+        tools:text="Discovered in 2017 while still beyond
+        the orbit of Saturn, Comet PanSTARRs is a new visitor to the inner solar system
+        and just over 13 light-minutes from planet Earth" />
+
+    <ImageView
+        android:id="@+id/deleteNoteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/edit_note_view_margin_end"
+        android:layout_marginTop="@dimen/edit_note_view_margin_top"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/noteDropUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_drop_up"
+        app:layout_constraintBottom_toBottomOf="@+id/noteDropDownButton"
+        app:layout_constraintEnd_toStartOf="@+id/noteDropDownButton"
+        app:layout_constraintTop_toTopOf="@+id/noteDropDownButton"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/noteDropDownButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edit_note_view_margin_top"
+        android:layout_marginEnd="@dimen/edit_note_view_margin_end"
+        android:src="@drawable/ic_arrow_drop_down"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

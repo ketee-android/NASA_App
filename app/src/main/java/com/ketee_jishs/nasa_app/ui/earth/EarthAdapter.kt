@@ -1,7 +1,11 @@
 package com.ketee_jishs.nasa_app.ui.earth
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.net.Uri
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +43,7 @@ class EarthAdapter(
     override fun getItemCount(): Int = data.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        @SuppressLint("SetTextI18n")
+        @SuppressLint("SetTextI18n", "ResourceAsColor")
         fun bind(data: EarthServerResponseData) {
             val date = formatterImage.format(itemDate)
             val url = data.image
@@ -49,7 +53,13 @@ class EarthAdapter(
             Picasso.get().load(Uri.parse(image)).into(itemView.earthImageView)
 
             itemView.captionText.text = data.caption
-            itemView.dateText.text = "Date: ${data.date}"
+            val dateSpannable = SpannableString("Date: ${data.date}")
+            dateSpannable.setSpan(
+                ForegroundColorSpan(Color.GRAY),
+                17, dateSpannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            itemView.dateText.text = dateSpannable
         }
     }
 }

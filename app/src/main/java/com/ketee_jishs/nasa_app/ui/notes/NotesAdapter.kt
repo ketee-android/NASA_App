@@ -35,12 +35,12 @@ class NotesAdapter(
             itemView.noteItemHeader.text = data.noteHeader
             itemView.noteItemBody.text = data.noteBody
 
-            itemView.deleteNoteButton.setOnClickListener { removeNote() }
+            itemView.hideNoteButton.setOnClickListener { hideNote() }
             itemView.noteDropUpButton.setOnClickListener { dropNoteUp() }
             itemView.noteDropDownButton.setOnClickListener { dropNoteDown() }
         }
 
-        private fun removeNote() {
+        private fun hideNote() {
             data.removeAt(layoutPosition)
             notifyItemRemoved(layoutPosition)
         }
@@ -65,7 +65,6 @@ class NotesAdapter(
 
         override fun onItemSelected() {}
 
-        @SuppressLint("ResourceAsColor")
         override fun onItemClear() {}
     }
 
@@ -73,7 +72,8 @@ class NotesAdapter(
         data.removeAt(fromPosition).apply {
             data.add(
                 if (toPosition > fromPosition) toPosition - 1
-                else toPosition, this)
+                else toPosition, this
+            )
         }
         notifyItemMoved(fromPosition, toPosition)
     }

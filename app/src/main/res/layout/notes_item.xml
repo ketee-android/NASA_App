@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteNoteButton"
+        app:layout_constraintTop_toBottomOf="@+id/hideNoteButton"
         tools:text="Two Clusters and a Comet" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -30,12 +30,12 @@
         and just over 13 light-minutes from planet Earth" />
 
     <ImageView
-        android:id="@+id/deleteNoteButton"
+        android:id="@+id/hideNoteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/edit_note_view_margin_end"
         android:layout_marginTop="@dimen/edit_note_view_margin_top"
-        android:src="@drawable/ic_delete"
+        android:src="@drawable/ic_hide"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="parent"

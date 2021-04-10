@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">NASA App</string>
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="search_wiki">Find on Wikipedia</string>
@@ -24,4 +24,10 @@
     <string name="mardi">Mars Descent Imager</string>
     <string name="navcam">Navigation Camera</string>
     <string name="coronal_mass_ejection">Coronal Mass Ejection</string>
+    <string name="noted_toolbar_text">Notes</string>
+    <string name="enter_title">Enter title</string>
+    <string name="enter_text">Enter text</string>
+    <string name="add_note">Add note</string>
+    <string name="ok">OK</string>
+    <string name="cancel" tools:ignore="ButtonCase">CANCEL</string>
 </resources>

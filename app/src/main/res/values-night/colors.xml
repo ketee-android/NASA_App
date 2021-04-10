@@ -18,5 +18,5 @@
     <color name="navigation_icon_night_color">#A3A3A3</color>
     <color name="navigation_menu_background">#252732</color>
     <color name="no_photo_vector_color">#40393D4C</color>
-    <color name="sun_item_background_color">#4D393D4C</color>
+    <color name="recycler_item_background_color">#45393D4C</color>
 </resources>

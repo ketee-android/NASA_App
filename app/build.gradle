@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -34,6 +35,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
     }
 }
 
@@ -82,4 +87,12 @@ dependencies {
     //noinspection GradleDependency
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.mediarouter:mediarouter:1.2.2'
+
+    //Room
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    implementation 'androidx.room:room-runtime:2.2.6'
+    kapt 'androidx.room:room-compiler:2.2.6'
+
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "android.arch.lifecycle:compiler:1.1.1"
 }

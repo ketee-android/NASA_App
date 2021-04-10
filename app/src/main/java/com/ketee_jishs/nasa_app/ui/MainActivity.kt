@@ -20,6 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.ketee_jishs.nasa_app.R
 import com.ketee_jishs.nasa_app.ui.earth.MainEarthFragment
 import com.ketee_jishs.nasa_app.ui.mars.MainMarsFragment
+import com.ketee_jishs.nasa_app.ui.notes.NotesFragment
 import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayData
 import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayFragment
 import com.ketee_jishs.nasa_app.ui.picture.PictureOfTheDayViewModel
@@ -131,6 +132,17 @@ class MainActivity : AppCompatActivity() {
         bottomSheetContainer.visibility = View.GONE
     }
 
+    private fun goToNotesScreen() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, NotesFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+
+        setSettingsBottomAppBar()
+        bottomSheetContainer.visibility = View.GONE
+    }
+
     private fun setBottomAppBar() {
         when (PictureOfTheDayFragment.isMain) {
             true -> setMainBottomAppBar()
@@ -145,12 +157,7 @@ class MainActivity : AppCompatActivity() {
         bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
 
         fab.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_plus_fab))
-        fab.setOnClickListener {
-            setScreen(
-                goToSettingsScreen(),
-                SETTINGS_SCREEN
-            )
-        } // Потом придумаю что-нибудь другое (UPD: пока не придумала, но кнопку хочу оставить)
+        fab.setOnClickListener { setScreen(goToNotesScreen(), NOTES_SCREEN) }
 
         marsNavigationView.visibility = View.GONE
         mainNavigationView.visibility = View.VISIBLE
@@ -311,6 +318,7 @@ class MainActivity : AppCompatActivity() {
         when (getScreenPrefs()) {
             PICTURE_SCREEN -> goToMainScreen()
             SETTINGS_SCREEN -> goToSettingsScreen()
+            NOTES_SCREEN -> goToNotesScreen()
         }
     }
 

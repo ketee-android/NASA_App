@@ -18,8 +18,8 @@ import com.ketee_jishs.nasa_app.R
 import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.notes_fragment.*
 
+@Suppress("SameParameterValue")
 class NotesFragment : Fragment() {
-
     val viewModel: NotesViewModel by lazy {
         ViewModelProviders.of(this).get(NotesViewModel::class.java)
     }
@@ -74,7 +74,7 @@ class NotesFragment : Fragment() {
                 if (newNoteBody.isEmpty() || newNoteHeader.isEmpty()) {
                     dialog.dismiss()
                 } else {
-                    data.plus(NotesData(newNoteHeader, newNoteBody))
+                    data.add(NotesData(newNoteHeader, newNoteBody))
                     viewModel.saveNoteToDB(NotesData(newNoteHeader, newNoteBody))
                     notesAdapter.replaceData(data)
                     activity?.recreate()
@@ -89,6 +89,5 @@ class NotesFragment : Fragment() {
 
     companion object {
         fun newInstance() = NotesFragment()
-        var notesList: MutableList<NotesData> = mutableListOf()
     }
 }

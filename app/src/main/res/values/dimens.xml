@@ -59,8 +59,8 @@
     <dimen name="note_date_padding">0dp</dimen>
     <dimen name="note_date_padding_start">10dp</dimen>
     <dimen name="note_date_margin_top">18dp</dimen>
-    <dimen name="edit_note_view_margin_end">2dp</dimen>
-    <dimen name="edit_note_view_margin_top">8dp</dimen>
+    <dimen name="edit_note_view_margin_end">4dp</dimen>
+    <dimen name="edit_note_view_margin_top">10dp</dimen>
     <dimen name="add_note_view_margin_end">5dp</dimen>
     <dimen name="note_dialog_text_input_margin_top">10dp</dimen>
     <dimen name="note_dialog_text_input_margin_end">7dp</dimen>

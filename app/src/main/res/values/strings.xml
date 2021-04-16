@@ -30,4 +30,6 @@
     <string name="add_note">Add note</string>
     <string name="ok">OK</string>
     <string name="cancel" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="no_data">The data has not yet arrived</string>
+    <string name="choose_different_camera">Try to choose a different camera or see photos from other days</string>
 </resources>

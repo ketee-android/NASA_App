@@ -5,15 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.MediaController
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import coil.api.load
 import com.ketee_jishs.nasa_app.R
 import com.ketee_jishs.nasa_app.util.*
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -21,7 +17,7 @@ import java.text.SimpleDateFormat
 
 @Suppress("DEPRECATION")
 @SuppressLint("FragmentLiveDataObserve")
-class PictureOfTheDayFragment : Fragment() {
+class PictureOfTheDayFragment : Fragment(R.layout.fragment_main_start) {
     private val sharedPrefs by lazy {
         activity?.getSharedPreferences(CHIPS_SHARED_PREFS_NAME, Context.MODE_PRIVATE)
     }
@@ -40,13 +36,6 @@ class PictureOfTheDayFragment : Fragment() {
 
         initChips()
         checkChip()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main_start, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,6 +72,7 @@ class PictureOfTheDayFragment : Fragment() {
             .observe(this@PictureOfTheDayFragment, Observer<PictureOfTheDayData> { renderData(it) })
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun renderData(data: PictureOfTheDayData) {
         when (data) {
             is PictureOfTheDayData.Success -> {
@@ -91,25 +81,11 @@ class PictureOfTheDayFragment : Fragment() {
                 if (url.isNullOrEmpty()) {
                     toast("Link is empty")
                 } else {
-                    if (serverResponseData.mediaType.equals("image")) {
-                        imageView.visibility = View.VISIBLE
-                        videoView.visibility = View.GONE
-                        imageView.load(url) {
-                            lifecycle(this@PictureOfTheDayFragment)
-                            placeholder(R.drawable.ic_no_photo_vector)
-                            error (R.drawable.ic_load_error_vector)
-                        }
-                        progressBar.visibility = View.GONE
-                    }
-                    if (serverResponseData.mediaType.equals("video")) {
-                        imageView.visibility = View.GONE
-                        videoView.visibility = View.VISIBLE
-                        videoView.setVideoURI(Uri.parse(url))
-                        videoView.setMediaController(MediaController(context))
-                        videoView.requestFocus(0)
-                        videoView.start()
-                        progressBar.visibility = View.GONE
-                    }
+                    webView.settings.javaScriptEnabled = true
+                    webView.settings.useWideViewPort = true
+                    webView.settings.loadWithOverviewMode = true
+                    webView.loadUrl(url)
+                    progressBar.visibility = View.GONE
                 }
             }
             is PictureOfTheDayData.Loading -> {

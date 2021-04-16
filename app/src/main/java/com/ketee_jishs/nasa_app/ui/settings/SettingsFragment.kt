@@ -2,9 +2,6 @@ package com.ketee_jishs.nasa_app.ui.settings
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.ketee_jishs.nasa_app.R
@@ -15,16 +12,9 @@ import com.ketee_jishs.nasa_app.util.THEME_NIGHT
 import com.ketee_jishs.nasa_app.util.THEME_PREFS_NAME
 import kotlinx.android.synthetic.main.fragment_settings.*
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private val sharedPrefs by lazy {activity?.getSharedPreferences(THEME_PREFS_NAME, Context.MODE_PRIVATE)}
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_settings, container, false)
-    }
 
     override fun onStart() {
         super.onStart()

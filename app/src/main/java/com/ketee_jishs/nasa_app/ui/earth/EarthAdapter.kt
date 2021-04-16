@@ -47,7 +47,6 @@ class EarthAdapter(
         fun bind(data: EarthServerResponseData) {
             val date = formatterImage.format(itemDate)
             val url = data.image
-            // https://api.nasa.gov/EPIC/archive/natural/2021/03/27/png/epic_1b_20210327004554.png?api_key=DEMO_API
             val image =
                 "https://api.nasa.gov/EPIC/archive/natural/$date/png/$url.png?api_key=${BuildConfig.NASA_API_KEY}"
             Picasso.get().load(Uri.parse(image)).into(itemView.earthImageView)

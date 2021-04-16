@@ -79,24 +79,13 @@
                     android:text="@string/day_before_yesterday_text" />
             </com.google.android.material.chip.ChipGroup>
 
-            <com.ketee_jishs.nasa_app.util.EquilateralImageView
-                android:id="@+id/imageView"
+            <WebView
+                android:id="@+id/webView"
                 style="@style/equilateralImageViewStyle"
+                android:layout_height="@dimen/web_view_height"
                 android:contentDescription="@string/photo_of_the_day_stub"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/chipMainGroup"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
-
-            <com.ketee_jishs.nasa_app.util.EquilateralVideoView
-                android:id="@+id/videoView"
-                style="@style/equilateralImageViewStyle"
-                android:contentDescription="@string/photo_of_the_day_stub"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/chipMainGroup"
                 app:layout_constraintVertical_bias="0.0" />
@@ -113,4 +102,3 @@
         </androidx.constraintlayout.motion.widget.MotionLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

@@ -75,8 +75,8 @@ class MarsYesterdayFragment : Fragment() {
             }
         } catch (e: Exception) {
             marsImageView.load(R.drawable.ic_load_error_vector)
-            cameraName.text = "The data has not yet arrived"
-            dateMarsView.text = "Try to choose a different camera or see photos from other days"
+            cameraName.text = resources.getString(R.string.no_data)
+            dateMarsView.text = resources.getString(R.string.choose_different_camera)
             marsProgressBar.visibility = View.GONE
         }
     }

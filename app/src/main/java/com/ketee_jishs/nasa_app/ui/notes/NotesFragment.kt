@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -19,20 +17,13 @@ import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.notes_fragment.*
 
 @Suppress("SameParameterValue")
-class NotesFragment : Fragment() {
+class NotesFragment : Fragment(R.layout.notes_fragment) {
     val viewModel: NotesViewModel by lazy {
         ViewModelProviders.of(this).get(NotesViewModel::class.java)
     }
 
     private val notesAdapter = NotesAdapter(arrayListOf())
     private lateinit var itemTouchHelper: ItemTouchHelper
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.notes_fragment, container, false)
-    }
 
 
     @RequiresApi(Build.VERSION_CODES.M)

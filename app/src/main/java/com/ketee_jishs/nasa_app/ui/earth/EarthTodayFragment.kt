@@ -2,9 +2,7 @@ package com.ketee_jishs.nasa_app.ui.earth
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,7 +13,7 @@ import com.ketee_jishs.nasa_app.util.getDayBeforeYesterdayDate
 import kotlinx.android.synthetic.main.fragment_earth.*
 import java.text.SimpleDateFormat
 
-class EarthTodayFragment : Fragment() {
+class EarthTodayFragment : Fragment(R.layout.fragment_earth) {
 
     private val viewModel: EarthViewModel by lazy {
         ViewModelProviders.of(this).get(EarthViewModel::class.java)
@@ -25,13 +23,6 @@ class EarthTodayFragment : Fragment() {
 
     @SuppressLint("SimpleDateFormat")
     private val formatterUrl = SimpleDateFormat("yyyy-MM-dd")
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_earth, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

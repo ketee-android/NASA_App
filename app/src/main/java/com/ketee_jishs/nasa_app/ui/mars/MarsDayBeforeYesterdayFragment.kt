@@ -2,7 +2,6 @@ package com.ketee_jishs.nasa_app.ui.mars
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -20,19 +19,12 @@ import com.ketee_jishs.nasa_app.util.getForthDate
 import kotlinx.android.synthetic.main.fragment_mars.*
 import java.text.SimpleDateFormat
 
-class MarsDayBeforeYesterdayFragment : Fragment() {
+class MarsDayBeforeYesterdayFragment : Fragment(R.layout.fragment_mars) {
     private val viewModel: MarsViewModel by lazy {
         ViewModelProviders.of(this).get(MarsViewModel::class.java)
     }
     @SuppressLint("SimpleDateFormat")
     private val formatter = SimpleDateFormat("yyyy-MM-dd")
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_mars, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -75,8 +67,8 @@ class MarsDayBeforeYesterdayFragment : Fragment() {
             }
         } catch (e: Exception) {
             marsImageView.load(R.drawable.ic_load_error_vector)
-            cameraName.text = "The data has not yet arrived"
-            dateMarsView.text = "Try to choose a different camera or see photos from other days"
+            cameraName.text = resources.getString(R.string.no_data)
+            dateMarsView.text = resources.getString(R.string.choose_different_camera)
             marsProgressBar.visibility = View.GONE
         }
     }

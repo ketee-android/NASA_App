@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import java.text.SimpleDateFormat
 
 @Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val sharedPrefs by lazy {
         getSharedPreferences(CHIPS_SHARED_PREFS_NAME, Context.MODE_PRIVATE)
     }
@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
             goToMainScreen()
@@ -226,13 +225,13 @@ class MainActivity : AppCompatActivity() {
 
         marsCamerasNavigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.FHAZ -> changeRoverCamera("FHAZ")
-                R.id.RHAZ -> changeRoverCamera("RHAZ")
-                R.id.MAST -> changeRoverCamera("MAST")
-                R.id.CHEMCAM -> changeRoverCamera("CHEMCAM")
-                R.id.MAHLI -> changeRoverCamera("MAHLI")
-                R.id.MARDI -> changeRoverCamera("MARDI")
-                R.id.NAVCAM -> changeRoverCamera("NAVCAM")
+                R.id.FHAZ -> changeRoverCamera(resources.getString(R.string.fhaz))
+                R.id.RHAZ -> changeRoverCamera(resources.getString(R.string.rhaz))
+                R.id.MAST -> changeRoverCamera(resources.getString(R.string.mast))
+                R.id.CHEMCAM -> changeRoverCamera(resources.getString(R.string.chemcam))
+                R.id.MAHLI -> changeRoverCamera(resources.getString(R.string.mahli))
+                R.id.MARDI -> changeRoverCamera(resources.getString(R.string.mardi))
+                R.id.NAVCAM -> changeRoverCamera(resources.getString(R.string.navcam))
             }
             true
         }

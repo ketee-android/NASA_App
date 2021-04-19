@@ -3,18 +3,20 @@ package com.ketee_jishs.nasa_app.ui.earth
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.ketee_jishs.nasa_app.util.DAY_BEFORE_YESTERDAY_EARTH_FRAGMENT
-import com.ketee_jishs.nasa_app.util.TODAY_EARTH_FRAGMENT
-import com.ketee_jishs.nasa_app.util.YESTERDAY_EARTH_FRAGMENT
+import com.ketee_jishs.nasa_app.interactors.strings_interactor.StringsInteractor
+import com.ketee_jishs.nasa_app.util.*
 
 @Suppress("DEPRECATION")
-class MainEarthViewPagerAdapter(fragmentManager: FragmentManager) :
+class MainEarthViewPagerAdapter(
+    fragmentManager: FragmentManager,
+    private val stringsInteractor: StringsInteractor
+) :
     FragmentStatePagerAdapter(fragmentManager) {
 
     private val fragments = arrayOf(
-        EarthTodayFragment(),
-        EarthYesterdayFragment(),
-        EarthDayBeforeYesterdayFragment()
+        EarthFragment(getYesterdayDate()),
+        EarthFragment(getDayBeforeYesterdayDate()),
+        EarthFragment(getThirdDate())
     )
 
     override fun getItem(position: Int): Fragment {
@@ -32,10 +34,10 @@ class MainEarthViewPagerAdapter(fragmentManager: FragmentManager) :
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "            Today            "
-            1 -> "    Yesterday    "
-            2 -> "Day before YD"
-            else -> "      Today      "
+            0 -> stringsInteractor.viewPagerTodayText
+            1 -> stringsInteractor.viewPagerYesterdayText
+            2 -> stringsInteractor.viewPagerDayBeforeYDText
+            else -> stringsInteractor.viewPagerTodayText
         }
     }
 }

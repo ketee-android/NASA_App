@@ -1,7 +1,6 @@
 package com.ketee_jishs.nasa_app.ui.earth
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.net.Uri
 import android.text.Spannable
 import android.text.SpannableString
@@ -12,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ketee_jishs.nasa_app.BuildConfig
 import com.ketee_jishs.nasa_app.R
+import com.ketee_jishs.nasa_app.interactors.colors_interactor.ColorsInteractor
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.earth_item.view.*
 import java.text.SimpleDateFormat
@@ -19,7 +19,8 @@ import java.util.*
 
 class EarthAdapter(
     private var data: ArrayList<EarthServerResponseData> = arrayListOf(),
-    private var itemDate: Date
+    private var itemDate: Date,
+    private val colorsInteractor: ColorsInteractor
 ) : RecyclerView.Adapter<EarthAdapter.ViewHolder>() {
 
     @SuppressLint("SimpleDateFormat")
@@ -54,7 +55,7 @@ class EarthAdapter(
             itemView.captionText.text = data.caption
             val dateSpannable = SpannableString("Date: ${data.date}")
             dateSpannable.setSpan(
-                ForegroundColorSpan(Color.GRAY),
+                ForegroundColorSpan(colorsInteractor.earthDateTextColor),
                 17, dateSpannable.length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )

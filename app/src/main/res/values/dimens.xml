@@ -80,5 +80,5 @@
     <dimen name="splash_star_two_size">30dp</dimen>
     <dimen name="splash_star_four_and_six_size">12dp</dimen>
     <dimen name="splash_star_five_and_seven_size">15dp</dimen>
-    <dimen name="web_view_height">250dp</dimen>
+    <dimen name="web_view_height">350dp</dimen>
 </resources>

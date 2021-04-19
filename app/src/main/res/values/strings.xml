@@ -32,4 +32,8 @@
     <string name="cancel" tools:ignore="ButtonCase">CANCEL</string>
     <string name="no_data">The data has not yet arrived</string>
     <string name="choose_different_camera">Try to choose a different camera or see photos from other days</string>
+
+    <string name="view_pager_today_text">Today</string>
+    <string name="view_pager_yesterday_text">Yesterday</string>
+    <string name="view_pager_day_before_yd_text">Day B4 YD</string>
 </resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/splashImageView"
+        android:layout_width="@dimen/splash_image_view_size"
+        android:layout_height="@dimen/splash_image_view_size"
+        android:src="@drawable/ic_universe"
+        android:tint="@color/items_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starOneImage"
+        android:layout_width="@dimen/splash_star_one_size"
+        android:layout_height="@dimen/splash_star_one_size"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="@+id/splashImageView"
+        app:layout_constraintStart_toStartOf="@+id/splashImageView"
+        app:layout_constraintTop_toBottomOf="@+id/splashImageView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starTwoImage"
+        android:layout_width="@dimen/splash_star_two_size"
+        android:layout_height="@dimen/splash_star_two_size"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/starOneImage"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toEndOf="@+id/splashImageView"
+        app:layout_constraintTop_toBottomOf="@+id/starOneImage"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starThreeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_star"
+        app:layout_constraintEnd_toEndOf="@+id/splashImageView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/splashImageView"
+        app:layout_constraintTop_toTopOf="@+id/splashImageView" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starFourImage"
+        android:layout_width="@dimen/splash_star_four_and_six_size"
+        android:layout_height="@dimen/splash_star_four_and_six_size"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toTopOf="@+id/splashImageView"
+        app:layout_constraintEnd_toStartOf="@+id/starThreeImage"
+        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starFiveImage"
+        android:layout_width="@dimen/splash_star_five_and_seven_size"
+        android:layout_height="@dimen/splash_star_five_and_seven_size"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintStart_toEndOf="@+id/starTwoImage"
+        app:layout_constraintTop_toBottomOf="@+id/starTwoImage"
+        app:layout_constraintVertical_bias="0.145" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starSixImage"
+        android:layout_width="@dimen/splash_star_four_and_six_size"
+        android:layout_height="@dimen/splash_star_four_and_six_size"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/starFiveImage"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/starFiveImage"
+        app:layout_constraintVertical_bias="0.271" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starSevenImage"
+        android:layout_width="@dimen/splash_star_five_and_seven_size"
+        android:layout_height="@dimen/splash_star_five_and_seven_size"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="@+id/starThreeImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintStart_toStartOf="@+id/starThreeImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,7 @@
 package com.ketee_jishs.nasa_app.ui.sun
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,20 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ketee_jishs.nasa_app.R
 import kotlinx.android.synthetic.main.fragment_sun.*
 
-class SunFragment : Fragment() {
+class SunFragment : Fragment(R.layout.fragment_sun) {
 
     private val viewModel: SunViewModel by lazy {
         ViewModelProviders.of(this).get(SunViewModel::class.java)
     }
 
     private val sunAdapter = SunAdapter(arrayListOf())
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_sun, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

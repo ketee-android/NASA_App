@@ -34,7 +34,13 @@ class SunAdapter(
         fun bind(data: SunServerResponseData) {
             itemView.cmeTime.text = "Date: ${data.startTime}"
             itemView.cmeNote.text = data.note
-            itemView.cmeAnalysesNote.text = data.cmeAnalyses[0].note
+
+            try {
+                itemView.cmeAnalysesNote.visibility = View.VISIBLE
+                itemView.cmeAnalysesNote.text = data.cmeAnalyses[0].note
+            } catch (e: Exception) {
+                itemView.cmeAnalysesNote.visibility = View.GONE
+            }
         }
     }
 }

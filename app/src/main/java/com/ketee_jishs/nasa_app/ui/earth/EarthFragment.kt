@@ -2,47 +2,40 @@ package com.ketee_jishs.nasa_app.ui.earth
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ketee_jishs.nasa_app.R
-import com.ketee_jishs.nasa_app.util.getForthDate
+import com.ketee_jishs.nasa_app.interactors.colors_interactor.ColorsInteractorImpl
 import kotlinx.android.synthetic.main.fragment_earth.*
 import java.text.SimpleDateFormat
+import java.util.*
 
-class EarthDayBeforeYesterdayFragment : Fragment() {
+class EarthFragment(var date: Date) : Fragment(R.layout.fragment_earth) {
+    private lateinit var earthAdapter: EarthAdapter
     private val viewModel: EarthViewModel by lazy {
         ViewModelProviders.of(this).get(EarthViewModel::class.java)
     }
 
-    private var earthAdapter = EarthAdapter(arrayListOf(), getForthDate())
-
     @SuppressLint("SimpleDateFormat")
     private val formatterUrl = SimpleDateFormat("yyyy-MM-dd")
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_earth, container, false)
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        earthAdapter = EarthAdapter(arrayListOf(), date, ColorsInteractorImpl(context!!))
         earthRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         earthRecyclerView.adapter = earthAdapter
-        getData(formatterUrl.format(getForthDate()))
+        getData(formatterUrl.format(date))
     }
 
     private fun getData(date: String) {
         viewModel.getData(date)
-            .observe(this@EarthDayBeforeYesterdayFragment, Observer<EarthData> { renderData(it) })
+            .observe(this@EarthFragment, Observer<EarthData> { renderData(it) })
     }
 
     @SuppressLint("SetTextI18n")

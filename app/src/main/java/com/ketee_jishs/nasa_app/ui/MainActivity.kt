@@ -225,13 +225,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         marsCamerasNavigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.FHAZ -> changeRoverCamera(resources.getString(R.string.fhaz))
-                R.id.RHAZ -> changeRoverCamera(resources.getString(R.string.rhaz))
-                R.id.MAST -> changeRoverCamera(resources.getString(R.string.mast))
-                R.id.CHEMCAM -> changeRoverCamera(resources.getString(R.string.chemcam))
-                R.id.MAHLI -> changeRoverCamera(resources.getString(R.string.mahli))
-                R.id.MARDI -> changeRoverCamera(resources.getString(R.string.mardi))
-                R.id.NAVCAM -> changeRoverCamera(resources.getString(R.string.navcam))
+                R.id.FHAZ -> changeRoverCamera(resources.getString(R.string.fhaz_menu))
+                R.id.RHAZ -> changeRoverCamera(resources.getString(R.string.rhaz_menu))
+                R.id.MAST -> changeRoverCamera(resources.getString(R.string.mast_menu))
+                R.id.CHEMCAM -> changeRoverCamera(resources.getString(R.string.chemcam_menu))
+                R.id.MAHLI -> changeRoverCamera(resources.getString(R.string.mahli_menu))
+                R.id.MARDI -> changeRoverCamera(resources.getString(R.string.mardi_menu))
+                R.id.NAVCAM -> changeRoverCamera(resources.getString(R.string.navcam_menu))
             }
             true
         }

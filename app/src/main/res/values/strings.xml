@@ -23,6 +23,13 @@
     <string name="mahli">Mars Hand Lens Imager</string>
     <string name="mardi">Mars Descent Imager</string>
     <string name="navcam">Navigation Camera</string>
+    <string name="fhaz_menu">FHAZ</string>
+    <string name="rhaz_menu">RHAZ</string>
+    <string name="mast_menu">MAST</string>
+    <string name="chemcam_menu">CHEMCAM</string>
+    <string name="mahli_menu">MAHLI</string>
+    <string name="mardi_menu">MARDI</string>
+    <string name="navcam_menu">NAVCAM</string>
     <string name="coronal_mass_ejection">Coronal Mass Ejection</string>
     <string name="noted_toolbar_text">Notes</string>
     <string name="enter_title">Enter title</string>
